@@ -3,87 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kaagaz ✒️ — Poetry Archive</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <title>KAAGAZ.EXE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      padding: 40px 20px;
-      font-family: 'EB Garamond', serif;
-      background-color: #fefefe;
-      color: #1a1a1a;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .container {
-      max-width: 750px;
-      margin: auto;
+    body {
+      background: radial-gradient(#000000, #111);
+      color: #33ff33;
+      font-family: 'Press Start 2P', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0;
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      animation: flicker 2s infinite alternate;
     }
 
-    p.tagline {
-      font-size: 1.1rem;
-      color: #666;
-      margin-top: 8px;
+    .typing {
+      width: 22ch;
+      animation: typing 3s steps(22), blink 0.5s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #33ff33;
+      font-size: 0.9rem;
       margin-bottom: 40px;
     }
 
-    ul.poem-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul.poem-list li {
-      margin-bottom: 20px;
-    }
-
-    ul.poem-list a {
-      font-size: 1.3rem;
+    a {
+      display: block;
+      margin: 12px 0;
+      color: #33ff33;
       text-decoration: none;
-      color: #222;
-      border-bottom: 2px solid transparent;
-      transition: all 0.3s ease;
+      font-size: 0.75rem;
+      transition: color 0.2s ease;
     }
 
-    ul.poem-list a:hover {
-      border-bottom: 2px solid #111;
-      color: #000;
+    a:hover {
+      color: #00ffff;
     }
 
     .footer {
       margin-top: 60px;
-      font-size: 0.85rem;
-      color: #aaa;
-      text-align: center;
+      font-size: 0.5rem;
+      color: #888;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      ul.poem-list a {
-        font-size: 1.1rem;
-      }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 22ch; }
+    }
+
+    @keyframes blink {
+      from { border-color: transparent; }
+      to { border-color: #33ff33; }
+    }
+
+    @keyframes flicker {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.7; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>काग़ज़ ✒️</h1>
-    <p class="tagline">ख़ुद से बातें — A quiet archive of unquiet feelings</p>
+  <h1>KAAGAZ.EXE</h1>
+  <div class="typing">Booting up the soul...</div>
 
-    <ul class="poem-list">
-      <li><a href="midnight-burn.html">🖤 Midnight Burn</a></li>
-      <!-- Add more poems below as you write -->
-      <!-- Example: <li><a href="poem-2.html">Poem Title</a></li> -->
-    </ul>
+  <a href="midnight-burn.html">📜 Midnight Burn</a>
+  <a href="about.html">👤 About the Creator</a>
+  <a href="https://instagram.com/anurvg.r" target="_blank">📷 Instagram: @anurvg.r</a>
 
-    <div class="footer">
-      Made with chai & chaos ☕ · Anurag Borkakati · 2025
-    </div>
+  <div class="footer">
+    system://kaagaz.github.io/ initialized ©2025
   </div>
 </body>
 </html>
