@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KAAGAZ KHAAB</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>काग़ज़ khaab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,79 +13,168 @@
     }
 
     body {
-      background: radial-gradient(#000000, #111);
-      color: #33ff33;
-      font-family: 'Press Start 2P', monospace;
+      background: linear-gradient(145deg, #1f1c2c, #928dab);
+      font-family: 'Ubuntu Mono', monospace;
+      color: #e3f2fd;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
       text-align: center;
     }
 
+    .date-bar {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 0.65rem;
+      color: #b0c4de;
+      opacity: 0.8;
+    }
+
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 40px;
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: #f4e8ff;
       animation: flicker 2s infinite alternate;
     }
 
-    .typing {
-      width: 22ch;
-      animation: typing 3s steps(22), blink 0.5s step-end infinite alternate;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #33ff33;
-      font-size: 0.9rem;
-      margin-bottom: 40px;
+    .subtitle {
+      font-size: 1rem;
+      color: #cdeaff;
+      margin-bottom: 38px;
+      animation: fadeIn 2s ease-in-out;
+      opacity: 0.9;
     }
 
-    a {
-      display: block;
-      margin: 12px 0;
-      color: #33ff33;
+    .nav-link {
+      display: none;
+      margin: 10px 0;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      color: #e0f7fa;
       text-decoration: none;
-      font-size: 0.75rem;
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    a:hover {
-      color: #00ffff;
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 0.5rem;
-      color: #888;
+    .feedback-btn {
+      position: absolute;
+      bottom: 60px;
+      left: 14px;
+      font-size: 0.6rem;
+      padding: 5px 10px;
+      border: 1px dashed #a5b9c9;
+      color: #c7d7e4;
+      background: transparent;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      opacity: 0.3;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 22ch; }
+    .feedback-btn:hover {
+      opacity: 1;
+      background: #fff;
+      color: #000;
     }
 
-    @keyframes blink {
-      from { border-color: transparent; }
-      to { border-color: #33ff33; }
+    footer {
+      position: absolute;
+      bottom: 16px;
+      font-size: 0.55rem;
+      color: #b0b0b0;
+      opacity: 0.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes flicker {
       0%   { opacity: 1; }
-      50%  { opacity: 0.7; }
+      50%  { opacity: 0.8; }
       100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <h1>KAAGAZ.EXE</h1>
-  <div class="typing">Booting up the soul...</div>
+  <!-- Top-right: Date, Time, Moon -->
+  <div class="date-bar" id="date-bar">📆 Loading...</div>
 
-  <a href="midnight-burn.html">📜 Midnight Burn</a>
-  <a href="https://anurvg.github.io/aboutc.github.io/" target="_blank">👤 Creator Profile</a>
-  <a href="https://instagram.com/anurvg.r" target="_blank">📷 Instagram: @anurvg.r</a>
+  <!-- Title -->
+  <h1>काग़ज़ khaab</h1>
+  <div class="subtitle">🕯️ खुद se baatain...</div>
 
-  <div class="footer">
-    system://kaagaz.github.io/ initialized ©2025
-  </div>
+  <!-- Delayed Links -->
+  <a href="https://www.youtube.com/watch?v=BRQQ-Nw-vAE" target="_blank" class="nav-link" id="link1">🎬 You should watch</a>
+  <a href="https://anurvg.github.io/aboutc.github.io/" target="_blank" class="nav-link" id="link2">👤 Creator Profile</a>
+  <a href="https://instagram.com/anurvg.r" target="_blank" class="nav-link" id="link3">📷 Instagram: @anurvg.r</a>
+
+  <!-- Feedback Button -->
+  <a href="https://anurvg.github.io/feedback.github.io/" target="_blank" class="feedback-btn">💬 Feedback</a>
+
+  <!-- Footer -->
+  <footer>
+    system://kaagaz.github.io/ initialized ©2025 by @anurag
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Set Date, Time & Moon Phase
+    const dateBar = document.getElementById("date-bar");
+
+    function getMoonPhase(date) {
+      const lp = 2551443; // lunar period in seconds
+      const now = date / 1000;
+      const new_moon = new Date(1970, 0, 7, 20, 35, 0).getTime() / 1000;
+      const phase = ((now - new_moon) % lp) / lp;
+
+      if (phase < 0.03 || phase > 0.97) return "🌑 New Moon";
+      else if (phase < 0.22) return "🌒 Waxing Crescent";
+      else if (phase < 0.28) return "🌓 First Quarter";
+      else if (phase < 0.47) return "🌔 Waxing Gibbous";
+      else if (phase < 0.53) return "🌕 Full Moon";
+      else if (phase < 0.72) return "🌖 Waning Gibbous";
+      else if (phase < 0.78) return "🌗 Last Quarter";
+      else return "🌘 Waning Crescent";
+    }
+
+    function updateDateTime() {
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dateString = today.toLocaleDateString('en-US', options);
+      const timeString = today.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      const moon = getMoonPhase(today.getTime());
+
+      dateBar.innerHTML = `📆 ${dateString} | ⏰ ${timeString} IST | ${moon}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // Delay links
+    const delays = [1000, 1300, 1600];
+    const ids = ['link1', 'link2', 'link3'];
+    ids.forEach((id, i) => {
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el.style.display = 'inline-block';
+        el.style.animation = 'fadeIn 0.5s ease-in-out';
+      }, delays[i]);
+    });
+  </script>
 </body>
 </html>
