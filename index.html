@@ -2,85 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Midnight Burn — Kaagaz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kaagaz ✒️ — Poetry Archive</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 40px 20px;
       font-family: 'EB Garamond', serif;
-      background-color: #f9f9f9;
-      color: #111;
-      line-height: 1.7;
+      background-color: #fefefe;
+      color: #1a1a1a;
     }
 
     .container {
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 750px;
+      margin: auto;
     }
 
     h1 {
-      font-size: 2.6rem;
-      margin-bottom: 5px;
+      font-size: 2.8rem;
+      margin-bottom: 0;
+    }
+
+    p.tagline {
+      font-size: 1.1rem;
+      color: #666;
+      margin-top: 8px;
+      margin-bottom: 40px;
+    }
+
+    ul.poem-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.poem-list li {
+      margin-bottom: 20px;
+    }
+
+    ul.poem-list a {
+      font-size: 1.3rem;
+      text-decoration: none;
+      color: #222;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    ul.poem-list a:hover {
+      border-bottom: 2px solid #111;
       color: #000;
     }
 
-    .meta {
-      font-size: 0.95rem;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .poem {
-      white-space: pre-wrap;
-      font-size: 1.2rem;
-      color: #222;
-    }
-
     .footer {
-      margin-top: 50px;
+      margin-top: 60px;
       font-size: 0.85rem;
       color: #aaa;
       text-align: center;
     }
 
     @media (max-width: 600px) {
-      body {
-        padding: 20px 15px;
-      }
       h1 {
         font-size: 2rem;
+      }
+      ul.poem-list a {
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Midnight Burn</h1>
-    <div class="meta">by Anurag Borkakati · Kaagaz Verse</div>
-    
-    <div class="poem">
-I lit a cigarette at 2 AM, 
-not for the nicotine, 
-but to match the burn inside me.  
+    <h1>काग़ज़ ✒️</h1>
+    <p class="tagline">ख़ुद से बातें — A quiet archive of unquiet feelings</p>
 
-The world slept in peace,  
-while I argued with memories  
-that didn't know when to leave.  
-
-Smoke curled like her words once did —  
-gentle, haunting,  
-fading before they could be held.  
-
-Some nights don’t need monsters,  
-they have memories.  
-
-And they bite slower.
-    </div>
+    <ul class="poem-list">
+      <li><a href="midnight-burn.html">🖤 Midnight Burn</a></li>
+      <!-- Add more poems below as you write -->
+      <!-- Example: <li><a href="poem-2.html">Poem Title</a></li> -->
+    </ul>
 
     <div class="footer">
-      ॰ A part of <strong>काग़ज़ khaab: खुद se baatain</strong>
+      Made with chai & chaos ☕ · Anurag Borkakati · 2025
     </div>
   </div>
 </body>
