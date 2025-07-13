@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>काग़ज़ khaab</title>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -15,32 +14,18 @@
 
     body {
       height: 100vh;
-      background: #0b0c10 url('bps_bg.jpg') no-repeat center center/cover;
+      width: 100%;
       font-family: 'Ubuntu Mono', monospace;
-      color: #dfe6e9;
-      overflow: hidden;
+      background: url('assets/bps_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #e9ecf3;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      position: relative;
+      justify-content: flex-start;
       text-align: center;
-    }
-
-    .bulb {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      font-size: 1.3rem;
-      transform: rotate(-25deg);
-      animation: flicker 1.5s infinite;
-      color: #ffd54f;
-      z-index: 2;
-    }
-
-    @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0.2; }
+      position: relative;
+      overflow: hidden;
     }
 
     .date-bar {
@@ -48,69 +33,97 @@
       top: 10px;
       right: 14px;
       font-size: 0.55rem;
-      color: #aab0bc;
-      opacity: 0.7;
+      color: #c5c5c5;
+      opacity: 0.6;
     }
 
-    .container {
-      text-align: center;
-      animation: fadeIn 1s ease 1.2s forwards;
+    .bulb {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.4rem;
+      transform: rotate(-20deg);
+      animation: flicker 1.5s infinite;
+      color: #ffeb3b;
+      opacity: 0.8;
     }
 
-    h1 {
-      font-size: 2.8rem;
-      color: #f8f1ff;
-      text-shadow: 0 0 8px #7d5fff;
-      animation: riseUp 0.8s ease-out 1s forwards;
-      margin-bottom: 4px;
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.4;
+      }
     }
 
-    .subtitle {
-      font-size: 1.05rem;
-      color: #a2ded0;
-      white-space: nowrap;
+    .entry-title {
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-top: 100px;
+      animation: slideDown 1.5s ease-out forwards;
+    }
+
+    .typewriter {
+      font-size: 1rem;
+      color: #ffdfdc;
+      margin-top: -6px;
+      height: 22px;
       overflow: hidden;
-      border-right: 1px solid #a2ded0;
-      animation: typing 2s steps(28, end) 1.8s forwards;
+      white-space: nowrap;
+      border-right: 2px solid #ffdfdc;
+      width: 0;
+      animation: typing 2s steps(30, end) 1.5s forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 160px }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .nav-link {
-      display: block;
-      margin: 10px auto;
-      padding: 8px 20px;
-      font-size: 0.82rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
+      display: none;
+      margin: 12px 0;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
       color: #e0f7fa;
       text-decoration: none;
-      opacity: 0;
-      animation: fadeIn 0.7s ease forwards;
+      transition: all 0.3s ease;
     }
 
-    #link1 { animation-delay: 2.8s; }
-    #link2 { animation-delay: 3.1s; }
-
     .nav-link:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
     .feedback-btn {
       position: absolute;
-      bottom: 16px;
-      right: 14px;
+      bottom: 18px;
+      left: 16px;
       font-size: 0.6rem;
-      padding: 5px 10px;
-      border: 1px dashed #899db8;
-      color: #c0d8f0;
+      padding: 6px 12px;
+      border: 1px dashed #aaa;
+      color: #fff;
       background: transparent;
       border-radius: 6px;
       text-decoration: none;
       transition: all 0.3s ease;
-      opacity: 0.3;
-      z-index: 3;
+      opacity: 0.4;
     }
 
     .feedback-btn:hover {
@@ -121,52 +134,37 @@
 
     footer {
       position: absolute;
-      bottom: 4px;
-      font-size: 0.55rem;
-      color: #888;
-      opacity: 0.6;
+      bottom: 12px;
+      right: 16px;
+      font-size: 0.5rem;
+      color: #ccc;
+      opacity: 0.5;
     }
 
     @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes riseUp {
-      from { transform: translateY(0); }
-      to { transform: translateY(-40px); }
-    }
-
-    @keyframes typing {
-      from { width: 0; opacity: 1; }
-      to { width: 220px; opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
 <body>
-  <!-- Flickering Bulb -->
   <div class="bulb">💡</div>
+  <div class="date-bar" id="date-bar">📆 Loading...</div>
 
-  <!-- Date, Time & Moon -->
-  <div class="date-bar" id="date-bar">Loading...</div>
+  <h1 class="entry-title">काग़ज़ khaab</h1>
+  <div class="typewriter">ख़ुद se baatain...</div>
 
-  <!-- Title & Subtitle -->
-  <div class="container">
-    <h1>काग़ज़ khaab</h1>
-    <div class="subtitle">ख़ुद se baatein...</div>
-  </div>
-
-  <!-- Navigation -->
+  <!-- Delayed Links -->
   <a href="https://www.youtube.com/watch?v=BRQQ-Nw-vAE" target="_blank" class="nav-link" id="link1">🎬 You should watch</a>
-  <a href="https://anurvg.github.io/aboutc.github.io/" target="_blank" class="nav-link" id="link2">✍️ The Scribe</a>
+  <a href="https://anurvg.github.io/aboutc.github.io/" target="_blank" class="nav-link" id="link2">✒️ The Scribe</a>
 
-  <!-- Feedback Button -->
+  <!-- Feedback Button (Only One) -->
   <a href="https://anurvg.github.io/feedback.github.io/" target="_blank" class="feedback-btn">💬 Feedback</a>
 
-  <!-- Footer -->
-  <footer>system://kaagaz.github.io/ initialized ©2025 by @anurag</footer>
+  <footer>
+    system://kaagaz.github.io/ initialized ©2025 by @anurag
+  </footer>
 
-  <!-- Script for Time + Moon -->
   <script>
     const dateBar = document.getElementById("date-bar");
 
@@ -175,6 +173,7 @@
       const now = date / 1000;
       const new_moon = new Date(1970, 0, 7, 20, 35, 0).getTime() / 1000;
       const phase = ((now - new_moon) % lp) / lp;
+
       if (phase < 0.03 || phase > 0.97) return "🌑 New Moon";
       else if (phase < 0.22) return "🌒 Waxing Crescent";
       else if (phase < 0.28) return "🌓 First Quarter";
@@ -187,14 +186,26 @@
 
     function updateDateTime() {
       const today = new Date();
-      const dateString = today.toLocaleDateString('en-GB');
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+      const dateString = today.toLocaleDateString('en-US', options);
       const timeString = today.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
       const moon = getMoonPhase(today.getTime());
+
       dateBar.innerHTML = `📆 ${dateString} | ⏰ ${timeString} IST | ${moon}`;
     }
 
     setInterval(updateDateTime, 1000);
     updateDateTime();
+
+    const delays = [2200, 2400];
+    const ids = ['link1', 'link2'];
+    ids.forEach((id, i) => {
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el.style.display = 'inline-block';
+        el.style.animation = 'fadeIn 0.8s ease';
+      }, delays[i]);
+    });
   </script>
 </body>
-    </html>
+</html>
