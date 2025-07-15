@@ -1,172 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>काग़ज़ khaab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('assets/bps_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1e9e1;
+  text-align: center;
+  overflow: hidden;
+}
 
-    body {
-      font-family: 'Playfair Display', serif;
-      background: url('assets/bps_bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f1e9e1;
-      text-align: center;
-    }
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 60px;
-      padding-bottom: 80px;
-    }
+.date-bar {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  font-size: 0.6rem;
+  color: #d8d8d8;
+  opacity: 0.6;
+  z-index: 10;
+}
 
-    .date-bar {
-      position: fixed;
-      top: 12px;
-      right: 16px;
-      font-size: 0.6rem;
-      color: #d8d8d8;
-      opacity: 0.6;
-      z-index: 10;
-    }
+h1 {
+  font-size: 2.6rem;
+  color: #fceadf;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  animation: backInDown 1.4s both;
+}
 
-    .bulb {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-size: 1.3rem;
-      transform: rotate(-20deg);
-      animation: flicker 1.5s infinite;
-      color: #ffeb3b;
-      opacity: 0.8;
-      z-index: 10;
-    }
+@keyframes backInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-      20%, 22%, 24%, 55% { opacity: 0.4; }
-    }
+.typewriter {
+  font-size: 1rem;
+  color: #ffdfdc;
+  margin-top: 6px;
+  height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #ffdfdc;
+  width: 0;
+  animation: typing 2s steps(30, end) 1.4s forwards;
+}
 
-    h1 {
-      font-size: 2.6rem;
-      color: #ffffff;
-      opacity: 0;
-      animation: titleDrop 2s ease forwards;
-      margin-top: 35vh;
-    }
+@keyframes typing {
+  from { width: 0 }
+  to { width: 160px }
+}
 
-    @keyframes titleDrop {
-      0% { opacity: 0; transform: translateY(-30px); }
-      60% { opacity: 1; transform: translateY(0); }
-      100% { transform: translateY(-120px); }
-    }
+svg {
+  margin-top: 40px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  fill: #ffdfdc;
+  animation: flicker 1.5s infinite alternate;
+}
 
-    .typewriter {
-      font-size: 1rem;
-      color: #ffdfdc;
-      border-right: 2px solid #ffdfdc;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      margin-top: -60px;
-      animation: typing 2s steps(30, end) 2.2s forwards;
-    }
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.5;
+  }
+}
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 180px }
-    }
-
-    .quotes {
-      margin-top: 40px;
-      max-width: 600px;
-      display: none;
-      flex-direction: column;
-      gap: 16px;
-      animation: fadeInQuotes 1.5s ease 4.2s forwards;
-    }
-
-    .quote {
-      background: rgba(0,0,0,0.3);
-      padding: 12px 18px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.85rem;
-      font-style: italic;
-    }
-
-    @keyframes fadeInQuotes {
-      from { opacity: 0; }
-      to { opacity: 1; display: flex; }
-    }
-
-    .footer-section {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      align-items: center;
-    }
-
-    .feedback-btn {
-      font-size: 0.6rem;
-      padding: 6px 12px;
-      border: 1px dashed #aaa;
-      color: #fff;
-      background: transparent;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInFooter 1s ease 4.6s forwards;
-    }
-
-    footer {
-      font-size: 0.5rem;
-      color: #ccc;
-      opacity: 0;
-      animation: fadeInFooter 1s ease 4.6s forwards;
-    }
-
-    @keyframes fadeInFooter {
-      from { opacity: 0; }
-      to { opacity: 0.6; }
-    }
   </style>
 </head>
 <body>
-
-  <div class="bulb">💡</div>
-  <div class="date-bar" id="date-bar">📆 Loading...</div>
-
-  <div class="container">
+  <div class="date-bar" id="date-bar">📆 Loading...</div>  <div class="container">
     <h1>काग़ज़ khaab</h1>
-    <div class="typewriter">ख़ुद se baatain...</div>
+    <div class="typewriter">ख़ुद se baatain...</div><svg id="quoteSVG" viewBox="0 0 1000 100">
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" id="quoteText">
+    Loading...
+  </text>
+</svg>
 
-    <div class="quotes" id="quoteBox">
-      <div class="quote">Sometimes we open windows not to see what's outside, just to forget what's happening inside.</div>
-      <div class="quote">You always knew this stall was temporary, didn't you?</div>
-      <div class="quote">Like your name half written on the foggy window of a train that never came back.</div>
-      <div class="quote">They shared silence like it was a language.</div>
-      <div class="quote">Some things are best read without notifications.</div>
-      <div class="quote">The clock ticks — not counting time, but regrets.</div>
-      <div class="quote">Some goodbyes are meant to be whispered, not cried.</div>
-      <div class="quote">He was calm, she wanted chaos.</div>
-      <div class="quote">The world is a script; some people get the pen, others become the pages.</div>
-    </div>
-
-    <div class="footer-section">
-      <a href="https://anurvg.github.io/feedback.github.io/" target="_blank" class="feedback-btn">💬 Feedback</a>
-      <footer>system://kaagaz.github.io/ initialized ©2025 by @anurag</footer>
-    </div>
-  </div>
-
-  <script>
+  </div>  <script>
     const dateBar = document.getElementById("date-bar");
 
     function getMoonPhase(date) {
@@ -197,9 +126,27 @@
     setInterval(updateDateTime, 1000);
     updateDateTime();
 
-    setTimeout(() => {
-      document.getElementById("quoteBox").style.display = 'flex';
-    }, 4200);
-  </script>
-</body>
-        </html>
+    const quoteSVG = document.getElementById("quoteText");
+    const quotes = [
+      "Sometimes we open windows not to see what's outside,",
+      "just to forget what's happening inside.",
+      "You always knew this stall was temporary, didn't you?",
+      "Like your name half written on the foggy window",
+      "of a train that never came back.",
+      "They shared silence like it was a language.",
+      "Some things are best read without notifications.",
+      "The clock ticks — not counting time, but regrets.",
+      "Some goodbyes are meant to be whispered, not cried.",
+      "He was calm, she wanted chaos.",
+      "The world is a script; some get the pen, others the pages."
+    ];
+
+    let index = 0;
+    function rotateQuotes() {
+      quoteSVG.textContent = quotes[index];
+      index = (index + 1) % quotes.length;
+    }
+    setInterval(rotateQuotes, 2600);
+    rotateQuotes();
+  </script></body>
+</html>
